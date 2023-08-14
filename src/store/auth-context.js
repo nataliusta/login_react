@@ -36,7 +36,7 @@ export const AuthContextProvider = (props) => {
                 }}
             >
                 {props.children}
-        </AuthContext.Provider>;
+        </AuthContext.Provider>
     );
 };
 
