@@ -17,7 +17,7 @@ const emailReducer = (state, action) => {
   if (action.type === 'INPUT_BLUR') {
     return {value: state.value, isValid: state.value.includes('@')};
   }
-  return {value: '', isValid: false};o
+  return {value: '', isValid: false};
 };
 
 const passwordReducer = (state, action) => {
@@ -103,13 +103,14 @@ const Login = () => {
   };
 
   const submitHandler = (event) => {
-    event.preventDefault();
-    if (formIsValid) {
-      authCtx.onLogin(emailState.value, passwordState.value);
-    } else if (!emailIsValid) {
-      emailInputRef.current.focus();
-    } else { 
-      passwordInputRef.current.focus();
+      event.preventDefault();
+      if (formIsValid) {
+        authCtx.onLogin(emailState.value, passwordState.value);
+      } else if (!emailIsValid) {
+        emailInputRef.current.focus();
+      } else { 
+        passwordInputRef.current.focus();
+    }
   };
 
   return (
