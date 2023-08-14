@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from './Input.module.css';
 
 const Input = (props) => {
+    const inputRef = useRef();
+
+    const activate = () => {
+        inputRef.current.focus();
+    };
+
     return (
         <div
           className={`${styles.control} ${
@@ -10,6 +16,7 @@ const Input = (props) => {
         >
           <label htmlFor={props.id}>{props.label}</label>
           <input
+            ref={inputRef}
             type={props.type}
             id={props.id}
             value={props.value}

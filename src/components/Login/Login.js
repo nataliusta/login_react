@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer, useContext } from 'react';
+import React, { useState, useEffect, useReducer, useContext, useRef } from 'react';
 
 import Card from '../UI/Card/Card';
 import styles from './Login.module.css';
@@ -13,7 +13,7 @@ const emailReducer = (state, action) => {
   if (action.type === 'INPUT_BLUR') {
     return {value: state.value, isValid: state.value.includes('@')};
   }
-  return {value: '', isValid: false};
+  return {value: '', isValid: false};o
 };
 
 const passwordReducer = (state, action) => {
@@ -97,7 +97,12 @@ const Login = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    authCtx.onLogin(emailState.value, passwordState.value);
+    if (formIsValid) {
+      authCtx.onLogin(emailState.value, passwordState.value);
+    } else if (!emailIsValid) {
+      
+    } else { 
+    }
   };
 
   return (
@@ -122,7 +127,7 @@ const Login = () => {
           onBlur={validatePasswordHandler}
         />
         <div className={styles.actions}>
-          <Button type="submit" className={styles.btn} disabled={!formIsValid}>
+          <Button type="submit" className={styles.btn}>
             Login
           </Button>
         </div>
